@@ -1,5 +1,5 @@
 body {
-  background-color: #030B15;
+  background-color: #000000;
   color: white;
 }
 
@@ -8,8 +8,81 @@ body {
   margin-bottom: 1 rem;
 }
 
+.spinning-globe {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #1e3a8a, #3b82f6, #60a5fa, #93c5fd);
+  background-size: 400% 400%;
+  animation: spin 3s linear infinite, gradient 4s ease infinite;
+  margin: 0 auto 2rem auto;
+  position: relative;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+.spinning-globe::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+  animation: shine 2s ease-in-out infinite alternate;
+}
+
+.spinning-globe::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 50%);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shine {
+  0% { opacity: 0.5; }
+  100% { opacity: 0.8; }
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  margin-bottom: 3rem;
+}
+
 .box {
   margin-top: 50px;
+  background-color: #111111;
+  border: 1px solid #1e3a8a;
 }
 
 .panel {
@@ -17,17 +90,17 @@ body {
 }
 
 .panel-heading {
-  xbackground-image: linear-gradient(to left, #38052f, #070709);
-  background-color: black;
+  background-color: #1e3a8a;
   color: white;
 }
 
 .address-box {
   padding: 3em;
+  background-color: #111111;
 }
 
 .box .title {
-  color: #333;
+  color: white;
 }
 
 .navbar {

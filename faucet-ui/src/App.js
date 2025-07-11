@@ -83,8 +83,11 @@ function App() {
       <section className="hero is-fullheight">
         <div className="faucet-hero-body">
           <div className="container has-text-centered main-content">
-            <h1 className="title is-1">Faucet</h1>
-            <p>Fast and reliable. 10 ACC a day.</p>
+            <div className="hero-content">
+              <div className="spinning-globe"></div>
+              <h1 className="main-title">Estar Faucet</h1>
+              <p className="subtitle">Fast and reliable. Collect 10 Free ESR tokens an hour.</p>
+            </div>
             <div className="mt-5">
               {error && <div className="withdraw-error">{error}</div>}
               {success && (
