@@ -90,10 +90,9 @@ function App() {
             </div>
             <div className="mt-5">
               {error && <div className="withdraw-error">{error}</div>}
-              }
               {success && (
                 <div className="withdraw-success">{success}</div>
-              )}{" "}
+              )}
             </div>
             <div className="box address-box">
               <div className="columns">
