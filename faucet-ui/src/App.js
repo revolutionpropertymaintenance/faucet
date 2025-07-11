@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { ethers } from "ethers";
+import { ethers } from "ethers/lib/ethers";
 
 const RPC_URL = "https://testnet-rpc.acrypto.cloud";
 
-const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
+const provider = new ethers.JsonRpcProvider(RPC_URL);
 
 function App() {
   const [inputAddress, setInputAddress] = useState("");
@@ -19,8 +19,9 @@ function App() {
     setError("");
     setSuccess("");
     setTxHash("");
-    if (!ethers.utils.isAddress(inputAddress)) {
+    if (!ethers.isAddress(inputAddress)) {
       setError("Invalid wallet address.");
+      setIsLoading(false);
       return;
     }
     try {
@@ -54,7 +55,7 @@ function App() {
         setTxInfo({
           from: tx.from,
           to: tx.to,
-          value: ethers.utils.formatEther(tx.value),
+          value: ethers.formatEther(tx.value),
           gasUsed: receipt.gasUsed.toString(),
           status: receipt.status === 1 ? "Success" : "Failed",
           timestamp: new Date(block.timestamp * 1000).toLocaleString(),
@@ -72,7 +73,7 @@ function App() {
         <div className="container">
           <div className="navbar-brand">
             <h1 className="navbar-item is-size-4">
-              <img src="/logo.png" />
+              <img src="/logo.png" alt="Logo" />
             </h1>
           </div>
           <div id="navbarMenu" className="navbar-menu">
@@ -86,11 +87,10 @@ function App() {
             <div className="hero-content">
               <div className="spinning-globe"></div>
               <h1 className="main-title">Estar Faucet</h1>
-              <p className="subtitle">Fast and reliable. Collect 10 Free ESR tokens an hour.</p>
+              <p className="subtitle">Fast and reliable. Collect 10 Free ACC tokens an hour.</p>
             </div>
             <div className="mt-5">
               {error && <div className="withdraw-error">{error}</div>}
-              }
               {success && (
                 <div className="withdraw-success">{success}</div>
               )}
@@ -115,7 +115,7 @@ function App() {
                   <button
                     className="button is-link is-medium"
                     onClick={handleFaucet}
-                    disabled={!inputAddress.trim() || isLoading}
+                    disabled={!inputAddress || !inputAddress.trim() || isLoading}
                   >
                     {isLoading ? "Loading..." : "GET TOKENS"}
                   </button>
