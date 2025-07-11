@@ -1,0 +1,17 @@
+{
+  "name": "faucet-dapp",
+  "version": "1.0.0",
+  "description": "A decentralized application (dApp) that provides a cryptocurrency faucet service",
+  "scripts": {
+    "install:ui": "cd faucet-ui && npm install",
+    "install:server": "cd faucet-server && npm install",
+    "install:all": "npm run install:ui && npm run install:server",
+    "start:ui": "cd faucet-ui && npm start",
+    "start:server": "cd faucet-server && npm start",
+    "build": "cd faucet-ui && npm run build",
+    "test": "cd faucet-ui && npm test"
+  },
+  "keywords": ["faucet", "dapp", "ethereum", "react", "express"],
+  "author": "",
+  "license": "MIT"
+}
